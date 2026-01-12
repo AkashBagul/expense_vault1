@@ -35,6 +35,9 @@ gem "image_processing", "~> 1.2"
 # Build JSON APIs with ease
 gem "jbuilder"
 
+# JWT for token authentication
+gem "jwt"
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 # Authactive Model has_secure_password

@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[8.1]
       t.string :name, null: false
       t.string :email, null: false, index: { unique: true }
       t.string :password_digest, null: false
-      t.integer :mobile_number
+      t.string :mobile_number
     end
   end
 end
