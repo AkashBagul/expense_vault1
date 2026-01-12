@@ -36,4 +36,3 @@ class UsersController < ApplicationController
     params.permit(:email, :password)
   end
 end
-{ "status": true, "user_data": { "id": "7256628d-df0c-4d24-850a-78010adc149d", "name": "Akash", "email": "akashbagulcode1@gmail.com", "created_at": "2026-01-12T08:29:26.816Z", "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiNzI1NjYyOGQtZGYwYy00ZDI0LTg1MGEtNzgwMTBhZGMxNDlkIiwiZXhwIjoxNzY4Mjk3ODY5fQ.euieqlSI4AHWn-9NhxucoATr8SkvVKRNrHzYCIR2vsM" } }
