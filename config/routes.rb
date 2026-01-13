@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   scope path: "/api", defaults: { format: :json } do
+    # users
     resources :users, only: [ :create ] do
       # member do
       #   get :profile
@@ -19,5 +20,8 @@ Rails.application.routes.draw do
         post :login
       end
     end
+
+    # categories
+    resources :categories, only: [ :create, :index, :show, :update, :destroy ]
   end
 end
