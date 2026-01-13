@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :perform_user_authorization!, only: [ :login ]
+  skip_before_action :perform_user_authorization!, only: [ :create, :login ]
+
   def create
     @user = User.new(name: user_params[:name],
                       email: user_params[:email]&.downcase,
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(email: user_login_params[:email])
+    @user = User.find_by(email: user_login_params[:email]&.downcase)
 
     if @user&.authenticate(user_login_params[:password])
       @token = JsonWebToken.encode(user_id: @user.id)
