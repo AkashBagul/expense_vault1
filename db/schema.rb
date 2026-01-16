@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_13_043650) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_14_121831) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -24,6 +24,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_13_043650) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
+  create_table "expenses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.uuid "category_id", null: false
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "payment_method"
+    t.date "spent_on", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "user_id", null: false
+    t.index ["category_id"], name: "index_expenses_on_category_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", null: false
@@ -35,4 +49,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_13_043650) do
   end
 
   add_foreign_key "categories", "users"
+  add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "users"
 end
